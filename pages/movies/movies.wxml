@@ -1,0 +1,31 @@
+<import src="movie-list/movie-list-template.wxml" />
+<import src="movie-grid/movie-grid-template.wxml" />
+<view class="search">
+  <icon type="search" class="search-img" size="13" color="#405f80"></icon>
+  <!--input搜索功能-->
+  <input type="text" placeholder="这个杀手不太冷、阿甘正传" 
+  placeholder-class="placeholder" bindfocus="onBindFocus"
+  bindblur="onBindBlur"/><!--搜索触发-->
+  <image wx:if="{{searchPanelShow}}" src="/images/icon/xx.png" class="xx-img" bindtap="onCancelImgTap"></image>
+</view>
+<view class="container" wx:if="{{containerShow}}">
+  <view class="movies-template">
+    <template is="movieListTemplate" data="{{...inTheaters}}" />
+  </view>
+
+  <view class="movies-template">
+    <template is="movieListTemplate" data="{{...comingSoon}}" />
+  </view>
+  <view class="movies-template">
+    <template is="movieListTemplate" data="{{...top250}}"/>
+  </view>
+</view>
+
+<view class="search-panel" wx:if="{{searchPanelShow}}">
+    <template is="movieGridTemplate" data="{{...searchResult}}"/>
+</view>
+
+<view>
+    <text class="time">由于服务器原因，页面加载不全的话，请尝试在整点的时候来看看吧</text> 
+    <text class="time">^_^</text>
+</view>
